@@ -21,7 +21,7 @@ function Game() {
       return
     }
     console.log(`Guess: ${guess}`);
-    const nextResults = [...results, {guess: guess, id: Math.random()}];
+    const nextResults = [...results, guess];
     setResults(nextResults);
     console.log({nextResults});
     setGuess("");
