@@ -5,6 +5,7 @@ import { WORDS } from "../../data";
 import GuessInput from "../GuessInput";
 import GuessResults from "../GuessResults"
 import {NUM_OF_GUESSES_ALLOWED} from "../../constants"
+import {checkGuess} from "../../game-helpers"
 
 // Pick a random word on every pageload.
 const answer = sample(WORDS);
@@ -20,8 +21,9 @@ function Game() {
       window.alert('Max number of guesses reached!')
       return
     }
+    const result = checkGuess(guess, answer)
     console.log(`Guess: ${guess}`);
-    const nextResults = [...results, guess];
+    const nextResults = [...results, result];
     setResults(nextResults);
     console.log({nextResults});
     setGuess("");
