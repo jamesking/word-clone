@@ -1,11 +1,17 @@
 import React from "react";
+import Guess from "../Guess";
+import { range } from "../../utils";
 
-function GuessResults({results}) {
+function GuessResults({ results, maxGuesses }) {
   return (
     <div className="guess-results">
-      {results.map((result) => (
-        <p key={result.id} className="guess">{result.guess}</p>
-      ))}
+      {range(0, maxGuesses, 1).map((index) =>
+        results[index] ? (
+          <Guess key={results[index].id} guess={results[index].guess} />
+        ) : (
+          <Guess key={`blank-${index}`} />
+        )
+      )}
     </div>
   );
 }
