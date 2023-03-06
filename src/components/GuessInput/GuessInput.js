@@ -1,6 +1,6 @@
 import React from "react";
 
-function GuessInput({guess, setGuess, handleGuess}) {
+function GuessInput({guess, setGuess, handleGuess, gameStatus}) {
 
   return (
     <form
@@ -13,6 +13,7 @@ function GuessInput({guess, setGuess, handleGuess}) {
       <label htmlFor="guess-input">Enter guess:</label>
       <input
         required
+        disabled={gameStatus != 'playing'}
         value={guess}
         maxLength={5}
         minLength={5}
